@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MusicPlayerApp
+namespace AppReproductorMusica
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace MusicPlayerApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MusicPlayerApp());
+            Application.Run(new AppReproductorMusica());
         }
     }
 }

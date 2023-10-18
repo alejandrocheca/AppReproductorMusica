@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MusicPlayerApp
+namespace AppReproductorMusica
 {
-    public partial class MusicPlayerApp : Form
+    public partial class AppReproductorMusica : Form
     {
         private List<string> selectedSongs = new List<string>();
         private List<string> selectedPaths = new List<string>();
-        public MusicPlayerApp()
+        public AppReproductorMusica()
         {
             InitializeComponent();
         }

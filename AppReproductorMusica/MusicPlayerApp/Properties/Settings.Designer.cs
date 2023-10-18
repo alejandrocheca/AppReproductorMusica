@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MusicPlayerApp.Properties
+namespace AppReproductorMusica.Properties
 {
 
 
