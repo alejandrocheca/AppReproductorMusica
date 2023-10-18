@@ -12,6 +12,8 @@ namespace MusicPlayerApp
 {
     public partial class MusicPlayerApp : Form
     {
+        private List<string> selectedSongs = new List<string>();
+        private List<string> selectedPaths = new List<string>();
         public MusicPlayerApp()
         {
             InitializeComponent();
@@ -22,29 +24,46 @@ namespace MusicPlayerApp
 
         private void btnSelectSongs_Click(object sender, EventArgs e)
         {
-            //Code to SElect Songs
             OpenFileDialog ofd = new OpenFileDialog();
-            //Code to select multiple files
             ofd.Multiselect = true;
-            if(ofd.ShowDialog()==System.Windows.Forms.DialogResult.OK)
+
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                files = ofd.SafeFileNames; //Save the names of the track in files array
-                paths = ofd.FileNames; //Save the paths of the tracks in path array
-                //Display the music titles in listbox
-                for (int i = 0; i < files.Length; i++)
+                for (int i = 0; i < ofd.FileNames.Length; i++)
                 {
-                    listBoxSongs.Items.Add(files[i]); //Display Songs in Listbox
+                    string songPath = ofd.FileNames[i];
+                    string songTitle = ofd.SafeFileNames[i];
+
+                    if (!IsSongInList(songTitle))
+                    {
+                        listBoxSongs.Items.Add(songTitle);
+                        selectedSongs.Add(songTitle);
+                        selectedPaths.Add(songPath);
+                    }
                 }
             }
+        }
+        private bool IsSongInList(string songTitle)
+        {
+            return selectedSongs.Contains(songTitle);
         }
 
         private void listBoxSongs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Write a code to play music
-            axWindowsMediaPlayerMusic.URL = paths[listBoxSongs.SelectedIndex];
+            int selectedIndex = listBoxSongs.SelectedIndex;
+
+            if (selectedIndex >= 0 && selectedIndex < selectedPaths.Count)
+            {
+                PlaySelectedSong(selectedIndex);
+            }
         }
-
-
+        private void PlaySelectedSong(int index)
+        {
+            if (index >= 0 && index < selectedPaths.Count)
+            {
+                axWindowsMediaPlayerMusic.URL = selectedPaths[index];
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             listBoxSongs.Items.Clear();
