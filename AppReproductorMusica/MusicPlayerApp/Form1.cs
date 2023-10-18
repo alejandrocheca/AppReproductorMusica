@@ -69,6 +69,18 @@ namespace MusicPlayerApp
             listBoxSongs.Items.Clear();
         }
 
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            //Code to Close the App
+            this.Close();
+        }
+
+        private void BtnMinimize_Click(object sender, EventArgs e)
+        {
+            //Code to minimize the window
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //Code to Close the App
