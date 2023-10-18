@@ -98,16 +98,6 @@ namespace AppReproductorMusica
                 PlaySelectedSong(selectedIndex);
             }
         }
-        private void BtnNext_Click(object sender, EventArgs e)
-        {
-            PlayNextSong();
-        }
-
-        private void BtnPrevious_Click(object sender, EventArgs e)
-        {
-            PlayPreviousSong();
-        }
-
         private void PlayPreviousSong()
         {
             if (listBoxSongs.Items.Count > 0)
@@ -121,6 +111,32 @@ namespace AppReproductorMusica
                 PlaySelectedSong(selectedIndex);
             }
         }
+        private void ContinueCurrentSong()
+        {
+            axWindowsMediaPlayerMusic.Ctlcontrols.play();
+        }
+        private void PauseCurrentSong()
+        {
+            axWindowsMediaPlayerMusic.Ctlcontrols.pause();
+        }
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            PlayNextSong();
+        }
 
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            PlayPreviousSong();
+        }
+       
+        private void BtnPause_Click(object sender, EventArgs e)
+        {
+            PauseCurrentSong();
+        }
+
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            ContinueCurrentSong();
+        }
     }
 }

@@ -39,6 +39,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.BtnNext = new System.Windows.Forms.Button();
             this.BtnPrevious = new System.Windows.Forms.Button();
+            this.BtnPause = new System.Windows.Forms.Button();
+            this.BtnPlay = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).BeginInit();
             this.SuspendLayout();
@@ -157,11 +159,33 @@
             this.BtnPrevious.UseVisualStyleBackColor = true;
             this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
             // 
+            // BtnPause
+            // 
+            this.BtnPause.Location = new System.Drawing.Point(251, 312);
+            this.BtnPause.Name = "BtnPause";
+            this.BtnPause.Size = new System.Drawing.Size(75, 23);
+            this.BtnPause.TabIndex = 8;
+            this.BtnPause.Text = "Pausa";
+            this.BtnPause.UseVisualStyleBackColor = true;
+            this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
+            // 
+            // BtnPlay
+            // 
+            this.BtnPlay.Location = new System.Drawing.Point(155, 312);
+            this.BtnPlay.Name = "BtnPlay";
+            this.BtnPlay.Size = new System.Drawing.Size(75, 23);
+            this.BtnPlay.TabIndex = 9;
+            this.BtnPlay.Text = "Play";
+            this.BtnPlay.UseVisualStyleBackColor = true;
+            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            // 
             // AppReproductorMusica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 387);
+            this.Controls.Add(this.BtnPlay);
+            this.Controls.Add(this.BtnPause);
             this.Controls.Add(this.BtnPrevious);
             this.Controls.Add(this.BtnNext);
             this.Controls.Add(this.button1);
@@ -192,6 +216,8 @@
         private System.Windows.Forms.Button BtnMinimize;
         private System.Windows.Forms.Button BtnNext;
         private System.Windows.Forms.Button BtnPrevious;
+        private System.Windows.Forms.Button BtnPause;
+        private System.Windows.Forms.Button BtnPlay;
     }
 }
 
