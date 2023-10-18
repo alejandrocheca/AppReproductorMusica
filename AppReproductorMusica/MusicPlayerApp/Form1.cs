@@ -80,11 +80,5 @@ namespace AppReproductorMusica
             //Code to minimize the window
             this.WindowState = FormWindowState.Minimized;
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            //Code to Close the App
-            this.Close();
-        }
     }
 }
