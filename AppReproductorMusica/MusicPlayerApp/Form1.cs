@@ -68,17 +68,59 @@ namespace AppReproductorMusica
         {
             listBoxSongs.Items.Clear();
         }
-
+        //
+        //Botones de ventana
+        //
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //Code to Close the App
             this.Close();
-        }
 
+        }
         private void BtnMinimize_Click(object sender, EventArgs e)
         {
             //Code to minimize the window
             this.WindowState = FormWindowState.Minimized;
         }
+        //
+        //botones de reproduccion
+        //
+        private void PlayNextSong()
+        {
+            if (listBoxSongs.Items.Count > 0)
+            {
+                int selectedIndex = listBoxSongs.SelectedIndex;
+
+                // Incrementar el índice para ir a la siguiente canción o volver al principio si se llega al final
+                selectedIndex = (selectedIndex + 1) % listBoxSongs.Items.Count;
+
+                listBoxSongs.SelectedIndex = selectedIndex;
+                PlaySelectedSong(selectedIndex);
+            }
+        }
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            PlayNextSong();
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            PlayPreviousSong();
+        }
+
+        private void PlayPreviousSong()
+        {
+            if (listBoxSongs.Items.Count > 0)
+            {
+                int selectedIndex = listBoxSongs.SelectedIndex;
+
+                // Decrementar el índice para ir a la canción anterior o al final si se está en la primera canción
+                selectedIndex = (selectedIndex - 1 + listBoxSongs.Items.Count) % listBoxSongs.Items.Count;
+
+                listBoxSongs.SelectedIndex = selectedIndex;
+                PlaySelectedSong(selectedIndex);
+            }
+        }
+
     }
 }

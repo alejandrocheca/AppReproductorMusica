@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppReproductorMusica));
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.BtnMinimize = new System.Windows.Forms.Button();
+            this.BtnClose = new System.Windows.Forms.Button();
             this.lblLogo = new System.Windows.Forms.Label();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.btnSelectSongs = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayerMusic = new AxWMPLib.AxWindowsMediaPlayer();
             this.button1 = new System.Windows.Forms.Button();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.BtnMinimize = new System.Windows.Forms.Button();
+            this.BtnNext = new System.Windows.Forms.Button();
+            this.BtnPrevious = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,32 @@
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(680, 35);
             this.TopPanel.TabIndex = 0;
+            // 
+            // BtnMinimize
+            // 
+            this.BtnMinimize.BackColor = System.Drawing.Color.Red;
+            this.BtnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BtnMinimize.ForeColor = System.Drawing.Color.White;
+            this.BtnMinimize.Location = new System.Drawing.Point(569, 0);
+            this.BtnMinimize.Name = "BtnMinimize";
+            this.BtnMinimize.Size = new System.Drawing.Size(54, 31);
+            this.BtnMinimize.TabIndex = 7;
+            this.BtnMinimize.Text = "-";
+            this.BtnMinimize.UseVisualStyleBackColor = false;
+            this.BtnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
+            // 
+            // BtnClose
+            // 
+            this.BtnClose.BackColor = System.Drawing.Color.Red;
+            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BtnClose.ForeColor = System.Drawing.Color.White;
+            this.BtnClose.Location = new System.Drawing.Point(623, 0);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(54, 31);
+            this.BtnClose.TabIndex = 6;
+            this.BtnClose.Text = "X";
+            this.BtnClose.UseVisualStyleBackColor = false;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // lblLogo
             // 
@@ -93,7 +121,7 @@
             this.axWindowsMediaPlayerMusic.Location = new System.Drawing.Point(10, 52);
             this.axWindowsMediaPlayerMusic.Name = "axWindowsMediaPlayerMusic";
             this.axWindowsMediaPlayerMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayerMusic.OcxState")));
-            this.axWindowsMediaPlayerMusic.Size = new System.Drawing.Size(467, 323);
+            this.axWindowsMediaPlayerMusic.Size = new System.Drawing.Size(0, 0);
             this.axWindowsMediaPlayerMusic.TabIndex = 3;
             // 
             // button1
@@ -109,37 +137,33 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // BtnClose
+            // BtnNext
             // 
-            this.BtnClose.BackColor = System.Drawing.Color.Red;
-            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnClose.ForeColor = System.Drawing.Color.White;
-            this.BtnClose.Location = new System.Drawing.Point(623, 0);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(54, 31);
-            this.BtnClose.TabIndex = 6;
-            this.BtnClose.Text = "X";
-            this.BtnClose.UseVisualStyleBackColor = false;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            this.BtnNext.Location = new System.Drawing.Point(349, 307);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(94, 33);
+            this.BtnNext.TabIndex = 6;
+            this.BtnNext.Text = "Siguiente";
+            this.BtnNext.UseVisualStyleBackColor = true;
+            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
-            // BtnMinimize
+            // BtnPrevious
             // 
-            this.BtnMinimize.BackColor = System.Drawing.Color.Red;
-            this.BtnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnMinimize.ForeColor = System.Drawing.Color.White;
-            this.BtnMinimize.Location = new System.Drawing.Point(569, 0);
-            this.BtnMinimize.Name = "BtnMinimize";
-            this.BtnMinimize.Size = new System.Drawing.Size(54, 31);
-            this.BtnMinimize.TabIndex = 7;
-            this.BtnMinimize.Text = "-";
-            this.BtnMinimize.UseVisualStyleBackColor = false;
-            this.BtnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
+            this.BtnPrevious.Location = new System.Drawing.Point(40, 307);
+            this.BtnPrevious.Name = "BtnPrevious";
+            this.BtnPrevious.Size = new System.Drawing.Size(99, 33);
+            this.BtnPrevious.TabIndex = 7;
+            this.BtnPrevious.Text = "Anterior";
+            this.BtnPrevious.UseVisualStyleBackColor = true;
+            this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
             // 
             // AppReproductorMusica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 387);
+            this.Controls.Add(this.BtnPrevious);
+            this.Controls.Add(this.BtnNext);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.axWindowsMediaPlayerMusic);
             this.Controls.Add(this.btnSelectSongs);
@@ -166,6 +190,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BtnClose;
         private System.Windows.Forms.Button BtnMinimize;
+        private System.Windows.Forms.Button BtnNext;
+        private System.Windows.Forms.Button BtnPrevious;
     }
 }
 
