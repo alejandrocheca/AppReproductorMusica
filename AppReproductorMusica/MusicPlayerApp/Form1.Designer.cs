@@ -93,7 +93,7 @@
             this.axWindowsMediaPlayerMusic.Location = new System.Drawing.Point(10, 52);
             this.axWindowsMediaPlayerMusic.Name = "axWindowsMediaPlayerMusic";
             this.axWindowsMediaPlayerMusic.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayerMusic.OcxState")));
-            this.axWindowsMediaPlayerMusic.Size = new System.Drawing.Size(467, 300);
+            this.axWindowsMediaPlayerMusic.Size = new System.Drawing.Size(467, 323);
             this.axWindowsMediaPlayerMusic.TabIndex = 3;
             // 
             // button1
