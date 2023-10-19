@@ -41,6 +41,8 @@
             this.BtnPrevious = new System.Windows.Forms.Button();
             this.BtnPause = new System.Windows.Forms.Button();
             this.BtnPlay = new System.Windows.Forms.Button();
+            this.BtnRepeatSong = new System.Windows.Forms.Button();
+            this.BtnRepeatList = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).BeginInit();
             this.SuspendLayout();
@@ -141,49 +143,75 @@
             // 
             // BtnNext
             // 
-            this.BtnNext.Location = new System.Drawing.Point(349, 307);
+            this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNext.Location = new System.Drawing.Point(190, 312);
             this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(94, 33);
+            this.BtnNext.Size = new System.Drawing.Size(45, 39);
             this.BtnNext.TabIndex = 6;
-            this.BtnNext.Text = "Siguiente";
+            this.BtnNext.Text = "»";
             this.BtnNext.UseVisualStyleBackColor = true;
             this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // BtnPrevious
             // 
-            this.BtnPrevious.Location = new System.Drawing.Point(40, 307);
+            this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrevious.Location = new System.Drawing.Point(34, 312);
             this.BtnPrevious.Name = "BtnPrevious";
-            this.BtnPrevious.Size = new System.Drawing.Size(99, 33);
+            this.BtnPrevious.Size = new System.Drawing.Size(46, 39);
             this.BtnPrevious.TabIndex = 7;
-            this.BtnPrevious.Text = "Anterior";
+            this.BtnPrevious.Text = "«";
             this.BtnPrevious.UseVisualStyleBackColor = true;
             this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
             // 
             // BtnPause
             // 
-            this.BtnPause.Location = new System.Drawing.Point(251, 312);
+            this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.BtnPause.Location = new System.Drawing.Point(137, 312);
             this.BtnPause.Name = "BtnPause";
-            this.BtnPause.Size = new System.Drawing.Size(75, 23);
+            this.BtnPause.Size = new System.Drawing.Size(47, 39);
             this.BtnPause.TabIndex = 8;
-            this.BtnPause.Text = "Pausa";
+            this.BtnPause.Text = "||";
             this.BtnPause.UseVisualStyleBackColor = true;
             this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
             // 
             // BtnPlay
             // 
-            this.BtnPlay.Location = new System.Drawing.Point(155, 312);
+            this.BtnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPlay.Location = new System.Drawing.Point(86, 312);
             this.BtnPlay.Name = "BtnPlay";
-            this.BtnPlay.Size = new System.Drawing.Size(75, 23);
+            this.BtnPlay.Size = new System.Drawing.Size(45, 39);
             this.BtnPlay.TabIndex = 9;
-            this.BtnPlay.Text = "Play";
+            this.BtnPlay.Text = "►";
             this.BtnPlay.UseVisualStyleBackColor = true;
             this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            // 
+            // BtnRepeatSong
+            // 
+            this.BtnRepeatSong.Location = new System.Drawing.Point(241, 312);
+            this.BtnRepeatSong.Name = "BtnRepeatSong";
+            this.BtnRepeatSong.Size = new System.Drawing.Size(54, 39);
+            this.BtnRepeatSong.TabIndex = 10;
+            this.BtnRepeatSong.Text = "Repetir";
+            this.BtnRepeatSong.UseVisualStyleBackColor = true;
+            this.BtnRepeatSong.Click += new System.EventHandler(this.BtnRepeatSong_Click);
+            // 
+            // BtnRepeatList
+            // 
+            this.BtnRepeatList.Location = new System.Drawing.Point(301, 312);
+            this.BtnRepeatList.Name = "BtnRepeatList";
+            this.BtnRepeatList.Size = new System.Drawing.Size(69, 39);
+            this.BtnRepeatList.TabIndex = 11;
+            this.BtnRepeatList.Text = "Repetir Lista";
+            this.BtnRepeatList.UseVisualStyleBackColor = true;
+            this.BtnRepeatList.Click += new System.EventHandler(this.BtnRepeatList_Click);
             // 
             // AppReproductorMusica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 387);
+            this.Controls.Add(this.BtnRepeatList);
+            this.Controls.Add(this.BtnRepeatSong);
             this.Controls.Add(this.BtnPlay);
             this.Controls.Add(this.BtnPause);
             this.Controls.Add(this.BtnPrevious);
@@ -218,6 +246,8 @@
         private System.Windows.Forms.Button BtnPrevious;
         private System.Windows.Forms.Button BtnPause;
         private System.Windows.Forms.Button BtnPlay;
+        private System.Windows.Forms.Button BtnRepeatSong;
+        private System.Windows.Forms.Button BtnRepeatList;
     }
 }
 

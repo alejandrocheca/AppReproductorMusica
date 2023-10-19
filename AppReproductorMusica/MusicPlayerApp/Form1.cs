@@ -111,6 +111,29 @@ namespace AppReproductorMusica
                 PlaySelectedSong(selectedIndex);
             }
         }
+        // Función para alternar el estado de repetición (indefinido o desactivado)
+        private bool isRepeating = false; // Variable para controlar la repetición
+        private Color defaultButtonColor; // Almacena el color por defecto del botón
+        private bool isRepeatingSong = false;
+        private bool isRepeatingList = false;
+        private void RepeatSong()
+        {
+            isRepeatingSong = !isRepeatingSong; // Alternar el estado de la repetición de la canción
+
+            if (isRepeatingSong)
+            {
+                // Configura el modo de repetición en bucle
+                axWindowsMediaPlayerMusic.settings.setMode("loop", true);
+                BtnRepeatSong.BackColor = Color.Green; // Cambiar el color del botón a verde
+            }
+            else
+            {
+                // Desactiva el modo de repetición
+                axWindowsMediaPlayerMusic.settings.setMode("loop", false);
+                BtnRepeatSong.BackColor = defaultButtonColor; // Restaura el color por defecto del botón
+            }
+        }
+       
         private void ContinueCurrentSong()
         {
             axWindowsMediaPlayerMusic.Ctlcontrols.play();
@@ -138,5 +161,14 @@ namespace AppReproductorMusica
         {
             ContinueCurrentSong();
         }
+
+        private void BtnRepeatSong_Click(object sender, EventArgs e)
+        {
+            RepeatSong();
+        }
+
+       
+
+        
     }
 }
