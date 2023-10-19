@@ -133,7 +133,22 @@ namespace AppReproductorMusica
                 BtnRepeatSong.BackColor = defaultButtonColor; // Restaura el color por defecto del botón
             }
         }
-       
+        private void RepeatPlaylist()
+        {
+            if (listBoxSongs.Items.Count > 0)
+            {
+                // Obtén el índice de la última canción en la lista
+                int lastIndex = listBoxSongs.Items.Count - 1;
+
+                // Comprueba si la última canción está siendo reproducida
+                if (listBoxSongs.SelectedIndex == lastIndex && axWindowsMediaPlayerMusic.playState == WMPLib.WMPPlayState.wmppsMediaEnded)
+                {
+                    // Vuelve a la primera canción de la lista
+                    listBoxSongs.SelectedIndex = 0;
+                    PlaySelectedSong(0);
+                }
+            }
+        }
         private void ContinueCurrentSong()
         {
             axWindowsMediaPlayerMusic.Ctlcontrols.play();
@@ -167,7 +182,24 @@ namespace AppReproductorMusica
             RepeatSong();
         }
 
-       
+        private void BtnRepeatList_Click(object sender, EventArgs e)
+        {
+            isRepeatingList = !isRepeatingList; // Alternar el estado de la repetición de la lista de canciones
+
+            if (isRepeatingList)
+            {
+                // Configura el modo de repetición en bucle
+                axWindowsMediaPlayerMusic.settings.setMode("loop", true);
+                BtnRepeatList.BackColor = Color.Green; // Cambiar el color del botón a verde
+            }
+            else
+            {
+                // Desactiva el modo de repetición
+                axWindowsMediaPlayerMusic.settings.setMode("loop", false);
+                BtnRepeatList.BackColor = defaultButtonColor; // Restaura el color por defecto del botón
+            }
+            RepeatPlaylist();
+        }
 
         
     }
