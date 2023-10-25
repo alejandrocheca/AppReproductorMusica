@@ -43,8 +43,16 @@
             this.BtnPlay = new System.Windows.Forms.Button();
             this.BtnRepeatSong = new System.Windows.Forms.Button();
             this.BtnRepeatList = new System.Windows.Forms.Button();
+            this.TBarSong = new System.Windows.Forms.TrackBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LabelDuration = new System.Windows.Forms.Label();
+            this.LabelCurrentTime = new System.Windows.Forms.Label();
+            this.TBarVolume = new System.Windows.Forms.TrackBar();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TBarSong)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TBarVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -144,7 +152,7 @@
             // BtnNext
             // 
             this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNext.Location = new System.Drawing.Point(190, 312);
+            this.BtnNext.Location = new System.Drawing.Point(167, 60);
             this.BtnNext.Name = "BtnNext";
             this.BtnNext.Size = new System.Drawing.Size(45, 39);
             this.BtnNext.TabIndex = 6;
@@ -155,7 +163,7 @@
             // BtnPrevious
             // 
             this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPrevious.Location = new System.Drawing.Point(34, 312);
+            this.BtnPrevious.Location = new System.Drawing.Point(11, 60);
             this.BtnPrevious.Name = "BtnPrevious";
             this.BtnPrevious.Size = new System.Drawing.Size(46, 39);
             this.BtnPrevious.TabIndex = 7;
@@ -166,7 +174,7 @@
             // BtnPause
             // 
             this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnPause.Location = new System.Drawing.Point(137, 312);
+            this.BtnPause.Location = new System.Drawing.Point(114, 60);
             this.BtnPause.Name = "BtnPause";
             this.BtnPause.Size = new System.Drawing.Size(47, 39);
             this.BtnPause.TabIndex = 8;
@@ -177,7 +185,7 @@
             // BtnPlay
             // 
             this.BtnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPlay.Location = new System.Drawing.Point(86, 312);
+            this.BtnPlay.Location = new System.Drawing.Point(63, 60);
             this.BtnPlay.Name = "BtnPlay";
             this.BtnPlay.Size = new System.Drawing.Size(45, 39);
             this.BtnPlay.TabIndex = 9;
@@ -187,7 +195,7 @@
             // 
             // BtnRepeatSong
             // 
-            this.BtnRepeatSong.Location = new System.Drawing.Point(241, 312);
+            this.BtnRepeatSong.Location = new System.Drawing.Point(218, 60);
             this.BtnRepeatSong.Name = "BtnRepeatSong";
             this.BtnRepeatSong.Size = new System.Drawing.Size(54, 39);
             this.BtnRepeatSong.TabIndex = 10;
@@ -197,7 +205,7 @@
             // 
             // BtnRepeatList
             // 
-            this.BtnRepeatList.Location = new System.Drawing.Point(301, 312);
+            this.BtnRepeatList.Location = new System.Drawing.Point(278, 60);
             this.BtnRepeatList.Name = "BtnRepeatList";
             this.BtnRepeatList.Size = new System.Drawing.Size(69, 39);
             this.BtnRepeatList.TabIndex = 11;
@@ -205,17 +213,66 @@
             this.BtnRepeatList.UseVisualStyleBackColor = true;
             this.BtnRepeatList.Click += new System.EventHandler(this.BtnRepeatList_Click);
             // 
+            // TBarSong
+            // 
+            this.TBarSong.Location = new System.Drawing.Point(43, 11);
+            this.TBarSong.Name = "TBarSong";
+            this.TBarSong.Size = new System.Drawing.Size(389, 45);
+            this.TBarSong.TabIndex = 12;
+            this.TBarSong.Scroll += new System.EventHandler(this.TBarSong_Scroll);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.TBarVolume);
+            this.panel1.Controls.Add(this.LabelDuration);
+            this.panel1.Controls.Add(this.LabelCurrentTime);
+            this.panel1.Controls.Add(this.TBarSong);
+            this.panel1.Controls.Add(this.BtnRepeatList);
+            this.panel1.Controls.Add(this.BtnPause);
+            this.panel1.Controls.Add(this.BtnRepeatSong);
+            this.panel1.Controls.Add(this.BtnNext);
+            this.panel1.Controls.Add(this.BtnPlay);
+            this.panel1.Controls.Add(this.BtnPrevious);
+            this.panel1.Location = new System.Drawing.Point(0, 280);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(479, 109);
+            this.panel1.TabIndex = 13;
+            // 
+            // LabelDuration
+            // 
+            this.LabelDuration.AutoSize = true;
+            this.LabelDuration.Location = new System.Drawing.Point(438, 14);
+            this.LabelDuration.Name = "LabelDuration";
+            this.LabelDuration.Size = new System.Drawing.Size(34, 13);
+            this.LabelDuration.TabIndex = 15;
+            this.LabelDuration.Text = "00:00";
+            // 
+            // LabelCurrentTime
+            // 
+            this.LabelCurrentTime.AutoSize = true;
+            this.LabelCurrentTime.Location = new System.Drawing.Point(3, 14);
+            this.LabelCurrentTime.Name = "LabelCurrentTime";
+            this.LabelCurrentTime.Size = new System.Drawing.Size(34, 13);
+            this.LabelCurrentTime.TabIndex = 14;
+            this.LabelCurrentTime.Text = "00:00";
+            // 
+            // TBarVolume
+            // 
+            this.TBarVolume.LargeChange = 1;
+            this.TBarVolume.Location = new System.Drawing.Point(353, 60);
+            this.TBarVolume.Maximum = 100;
+            this.TBarVolume.Name = "TBarVolume";
+            this.TBarVolume.Size = new System.Drawing.Size(119, 45);
+            this.TBarVolume.TabIndex = 16;
+            this.TBarVolume.Value = 100;
+            this.TBarVolume.Scroll += new System.EventHandler(this.TBarVolume_Scroll);
+            // 
             // AppReproductorMusica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 387);
-            this.Controls.Add(this.BtnRepeatList);
-            this.Controls.Add(this.BtnRepeatSong);
-            this.Controls.Add(this.BtnPlay);
-            this.Controls.Add(this.BtnPause);
-            this.Controls.Add(this.BtnPrevious);
-            this.Controls.Add(this.BtnNext);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.axWindowsMediaPlayerMusic);
             this.Controls.Add(this.btnSelectSongs);
@@ -228,6 +285,10 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TBarSong)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TBarVolume)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -248,6 +309,11 @@
         private System.Windows.Forms.Button BtnPlay;
         private System.Windows.Forms.Button BtnRepeatSong;
         private System.Windows.Forms.Button BtnRepeatList;
+        private System.Windows.Forms.TrackBar TBarSong;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label LabelCurrentTime;
+        private System.Windows.Forms.Label LabelDuration;
+        private System.Windows.Forms.TrackBar TBarVolume;
     }
 }
 

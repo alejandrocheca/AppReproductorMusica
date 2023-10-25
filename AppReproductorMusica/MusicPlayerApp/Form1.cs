@@ -17,6 +17,7 @@ namespace AppReproductorMusica
         public AppReproductorMusica()
         {
             InitializeComponent();
+            TBarSong.Scroll += TBarSong_Scroll;
         }
 
         //Create Global Variables of String Type Array to save the titles or name of the Tracks and path of the track
@@ -182,6 +183,31 @@ namespace AppReproductorMusica
             RepeatSong();
         }
 
+        private void TBarSong_Scroll(object sender, EventArgs e)
+        {
+            if (axWindowsMediaPlayerMusic.currentMedia != null)
+            {
+                // Obtén el valor actual del control TBarSong y ajusta la posición en la canción
+                int newPosition = TBarSong.Value;
+                double newTime = (newPosition / 100.0) * axWindowsMediaPlayerMusic.currentMedia.duration;
+
+                axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition = newTime; // Establece la posición en la canción
+
+                // Actualiza las etiquetas de tiempo
+                LabelCurrentTime.Text = TimeSpan.FromSeconds(newTime).ToString(@"mm\:ss");
+                LabelDuration.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.currentMedia.duration).ToString(@"mm\:ss");
+            }
+        }
+
+        private void TBarVolume_Scroll(object sender, EventArgs e)
+        {
+            // Obtén el valor actual del control TBarVolume
+            int newVolume = TBarVolume.Value;
+
+            // Establece el volumen del reproductor al nuevo valor
+            axWindowsMediaPlayerMusic.settings.volume = newVolume;
+        }
+
         private void BtnRepeatList_Click(object sender, EventArgs e)
         {
             isRepeatingList = !isRepeatingList; // Alternar el estado de la repetición de la lista de canciones
@@ -199,8 +225,6 @@ namespace AppReproductorMusica
                 BtnRepeatList.BackColor = defaultButtonColor; // Restaura el color por defecto del botón
             }
             RepeatPlaylist();
-        }
-
-        
+        } 
     }
 }
