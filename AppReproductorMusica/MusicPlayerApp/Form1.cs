@@ -12,13 +12,58 @@ namespace AppReproductorMusica
 {
     public partial class AppReproductorMusica : Form
     {
+        private bool isDragging = false;
+        private int offsetX, offsetY;
         private List<string> selectedSongs = new List<string>();
         private List<string> selectedPaths = new List<string>();
+        private Timer songPositionTimer = new Timer();
         public AppReproductorMusica()
         {
             InitializeComponent();
+
+            // Agregar los eventos de manejo de eventos de ratón
+            this.MouseDown += AppReproductorMusica_MouseDown;
+            this.MouseMove += AppReproductorMusica_MouseMove;
+            this.MouseUp += AppReproductorMusica_MouseUp;
+
+
             TBarSong.Scroll += TBarSong_Scroll;
+            songPositionTimer.Interval = 1000; // Actualiza cada segundo (puedes ajustar el intervalo según tus preferencias)
+            songPositionTimer.Tick += SongPositionTimer_Tick;
+
         }
+        // Agregar el evento MouseDown al formulario
+        private void AppReproductorMusica_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                offsetX = e.X;
+                offsetY = e.Y;
+            }
+        }
+
+        // Agregar el evento MouseMove al formulario
+        private void AppReproductorMusica_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                int newX = this.Left + e.X - offsetX;
+                int newY = this.Top + e.Y - offsetY;
+                this.Location = new Point(newX, newY);
+            }
+        }
+
+        // Agregar el evento MouseUp al formulario
+        private void AppReproductorMusica_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                // Desactivar el estado de arrastre cuando se suelta el botón del ratón
+                isDragging = false;
+            }
+        }
+
 
         //Create Global Variables of String Type Array to save the titles or name of the Tracks and path of the track
         String[] paths, files;
@@ -199,6 +244,18 @@ namespace AppReproductorMusica
             }
         }
 
+        private void SongPositionTimer_Tick(object sender, EventArgs e)
+        {
+            if (axWindowsMediaPlayerMusic.currentMedia != null)
+            {
+                int newPosition = (int)((axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition / axWindowsMediaPlayerMusic.currentMedia.duration) * 100);
+                TBarSong.Value = newPosition;
+
+                // Actualiza las etiquetas de tiempo
+                LabelCurrentTime.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition).ToString(@"mm\:ss");
+                LabelDuration.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.currentMedia.duration).ToString(@"mm\:ss");
+            }
+        }
         private void TBarVolume_Scroll(object sender, EventArgs e)
         {
             // Obtén el valor actual del control TBarVolume

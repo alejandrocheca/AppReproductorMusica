@@ -215,7 +215,9 @@
             // 
             // TBarSong
             // 
+            this.TBarSong.LargeChange = 1;
             this.TBarSong.Location = new System.Drawing.Point(43, 11);
+            this.TBarSong.Maximum = 100;
             this.TBarSong.Name = "TBarSong";
             this.TBarSong.Size = new System.Drawing.Size(389, 45);
             this.TBarSong.TabIndex = 12;
@@ -258,6 +260,8 @@
             // 
             // TBarVolume
             // 
+            this.TBarVolume.BackColor = System.Drawing.SystemColors.Control;
+            this.TBarVolume.CausesValidation = false;
             this.TBarVolume.LargeChange = 1;
             this.TBarVolume.Location = new System.Drawing.Point(353, 60);
             this.TBarVolume.Maximum = 100;
