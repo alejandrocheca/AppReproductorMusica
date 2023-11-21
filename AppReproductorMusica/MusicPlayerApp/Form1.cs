@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace AppReproductorMusica
 {
@@ -31,6 +27,7 @@ namespace AppReproductorMusica
             songPositionTimer.Interval = 1000; // Actualiza cada segundo (puedes ajustar el intervalo según tus preferencias)
             songPositionTimer.Tick += SongPositionTimer_Tick;
 
+            axWindowsMediaPlayerMusic.settings.autoStart = false; // Deshabilitar la reproducción automática
         }
         // Agregar el evento MouseDown al formulario
         private void AppReproductorMusica_MouseDown(object sender, MouseEventArgs e)
@@ -107,7 +104,14 @@ namespace AppReproductorMusica
         {
             if (index >= 0 && index < selectedPaths.Count)
             {
+                // Detener la reproducción actual antes de cargar una nueva canción
+                DetenerReproduccion();
+
+                // Cargar y reproducir la nueva canción
                 axWindowsMediaPlayerMusic.URL = selectedPaths[index];
+
+                // Iniciar la actualización del scroll
+                songPositionTimer.Start();
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -195,9 +199,23 @@ namespace AppReproductorMusica
                 }
             }
         }
+        private void DetenerReproduccion()
+        {
+            // Detener la reproducción actual
+            axWindowsMediaPlayerMusic.Ctlcontrols.stop();
+
+            // Detener la actualización del scroll
+            songPositionTimer.Stop();
+
+            // Reiniciar el control de scroll
+            TBarSong.Value = 0;
+        }
+
         private void ContinueCurrentSong()
         {
+            // Continuar la reproducción
             axWindowsMediaPlayerMusic.Ctlcontrols.play();
+            songPositionTimer.Start();
         }
         private void PauseCurrentSong()
         {
@@ -249,7 +267,20 @@ namespace AppReproductorMusica
             if (axWindowsMediaPlayerMusic.currentMedia != null)
             {
                 int newPosition = (int)((axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition / axWindowsMediaPlayerMusic.currentMedia.duration) * 100);
-                TBarSong.Value = newPosition;
+
+                // Asegúrate de que el valor esté dentro del rango permitido
+                if (newPosition < TBarSong.Minimum)
+                {
+                    TBarSong.Value = TBarSong.Minimum;
+                }
+                else if (newPosition > TBarSong.Maximum)
+                {
+                    TBarSong.Value = TBarSong.Maximum;
+                }
+                else
+                {
+                    TBarSong.Value = newPosition;
+                }
 
                 // Actualiza las etiquetas de tiempo
                 LabelCurrentTime.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition).ToString(@"mm\:ss");
