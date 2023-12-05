@@ -219,11 +219,13 @@ namespace AppReproductorMusica
         private void BtnNext_Click(object sender, EventArgs e)
         {
             PlayNextSong();
+            ContinueCurrentSong();
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
             PlayPreviousSong();
+            ContinueCurrentSong();
         }
 
         private void BtnPause_Click(object sender, EventArgs e)
