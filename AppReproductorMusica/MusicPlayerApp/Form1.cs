@@ -13,6 +13,7 @@ namespace AppReproductorMusica
         private List<string> selectedSongs = new List<string>();
         private List<string> selectedPaths = new List<string>();
         private Timer songPositionTimer = new Timer();
+
         public AppReproductorMusica()
         {
             InitializeComponent();
@@ -58,6 +59,25 @@ namespace AppReproductorMusica
             {
                 // Desactivar el estado de arrastre cuando se suelta el botón del ratón
                 isDragging = false;
+            }
+        }
+        private void UpdateSongPosition(int mouseX)
+        {
+            if (axWindowsMediaPlayerMusic.currentMedia != null)
+            {
+                int progressBarWidth = TBarSong.Width - 4; // Considera el ancho del margen
+                int newPosition = (int)((mouseX / (double)progressBarWidth) * 100);
+
+                // Asegúrate de que el valor esté dentro del rango permitido
+                newPosition = Math.Max(TBarSong.Minimum, Math.Min(TBarSong.Maximum, newPosition));
+
+                TBarSong.Value = newPosition;
+                double newTime = (newPosition / 100.0) * axWindowsMediaPlayerMusic.currentMedia.duration;
+                axWindowsMediaPlayerMusic.Ctlcontrols.currentPosition = newTime;
+
+                // Actualiza las etiquetas de tiempo
+                LabelCurrentTime.Text = TimeSpan.FromSeconds(newTime).ToString(@"mm\:ss");
+                LabelDuration.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.currentMedia.duration).ToString(@"mm\:ss");
             }
         }
 
@@ -114,6 +134,21 @@ namespace AppReproductorMusica
                 songPositionTimer.Start();
             }
         }
+        private void DetenerReproduccion()
+        {
+            // Detener la reproducción actual
+            axWindowsMediaPlayerMusic.Ctlcontrols.stop();
+
+            // Detener la actualización del scroll
+            songPositionTimer.Stop();
+
+            // Reiniciar el control de scroll
+            TBarSong.Value = 0;
+
+            // Reiniciar las etiquetas de tiempo
+            LabelCurrentTime.Text = "00:00";
+            LabelDuration.Text = "00:00";
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             listBoxSongs.Items.Clear();
@@ -148,6 +183,7 @@ namespace AppReproductorMusica
                 PlaySelectedSong(selectedIndex);
             }
         }
+       
         private void PlayPreviousSong()
         {
             if (listBoxSongs.Items.Count > 0)
@@ -199,17 +235,7 @@ namespace AppReproductorMusica
                 }
             }
         }
-        private void DetenerReproduccion()
-        {
-            // Detener la reproducción actual
-            axWindowsMediaPlayerMusic.Ctlcontrols.stop();
 
-            // Detener la actualización del scroll
-            songPositionTimer.Stop();
-
-            // Reiniciar el control de scroll
-            TBarSong.Value = 0;
-        }
 
         private void ContinueCurrentSong()
         {
@@ -287,6 +313,13 @@ namespace AppReproductorMusica
                 LabelDuration.Text = TimeSpan.FromSeconds(axWindowsMediaPlayerMusic.currentMedia.duration).ToString(@"mm\:ss");
             }
         }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            DetenerReproduccion();
+
+        }
+
         private void TBarVolume_Scroll(object sender, EventArgs e)
         {
             // Obtén el valor actual del control TBarVolume

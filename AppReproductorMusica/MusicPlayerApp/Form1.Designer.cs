@@ -45,9 +45,10 @@
             this.BtnRepeatList = new System.Windows.Forms.Button();
             this.TBarSong = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnStop = new System.Windows.Forms.Button();
+            this.TBarVolume = new System.Windows.Forms.TrackBar();
             this.LabelDuration = new System.Windows.Forms.Label();
             this.LabelCurrentTime = new System.Windows.Forms.Label();
-            this.TBarVolume = new System.Windows.Forms.TrackBar();
             this.TopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerMusic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TBarSong)).BeginInit();
@@ -152,9 +153,9 @@
             // BtnNext
             // 
             this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNext.Location = new System.Drawing.Point(167, 60);
+            this.BtnNext.Location = new System.Drawing.Point(192, 60);
             this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(45, 39);
+            this.BtnNext.Size = new System.Drawing.Size(44, 39);
             this.BtnNext.TabIndex = 6;
             this.BtnNext.Text = "»";
             this.BtnNext.UseVisualStyleBackColor = true;
@@ -163,9 +164,9 @@
             // BtnPrevious
             // 
             this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPrevious.Location = new System.Drawing.Point(11, 60);
+            this.BtnPrevious.Location = new System.Drawing.Point(6, 60);
             this.BtnPrevious.Name = "BtnPrevious";
-            this.BtnPrevious.Size = new System.Drawing.Size(46, 39);
+            this.BtnPrevious.Size = new System.Drawing.Size(45, 39);
             this.BtnPrevious.TabIndex = 7;
             this.BtnPrevious.Text = "«";
             this.BtnPrevious.UseVisualStyleBackColor = true;
@@ -174,9 +175,9 @@
             // BtnPause
             // 
             this.BtnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.BtnPause.Location = new System.Drawing.Point(114, 60);
+            this.BtnPause.Location = new System.Drawing.Point(96, 60);
             this.BtnPause.Name = "BtnPause";
-            this.BtnPause.Size = new System.Drawing.Size(47, 39);
+            this.BtnPause.Size = new System.Drawing.Size(46, 39);
             this.BtnPause.TabIndex = 8;
             this.BtnPause.Text = "||";
             this.BtnPause.UseVisualStyleBackColor = true;
@@ -185,9 +186,9 @@
             // BtnPlay
             // 
             this.BtnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPlay.Location = new System.Drawing.Point(63, 60);
+            this.BtnPlay.Location = new System.Drawing.Point(53, 60);
             this.BtnPlay.Name = "BtnPlay";
-            this.BtnPlay.Size = new System.Drawing.Size(45, 39);
+            this.BtnPlay.Size = new System.Drawing.Size(44, 39);
             this.BtnPlay.TabIndex = 9;
             this.BtnPlay.Text = "►";
             this.BtnPlay.UseVisualStyleBackColor = true;
@@ -195,7 +196,7 @@
             // 
             // BtnRepeatSong
             // 
-            this.BtnRepeatSong.Location = new System.Drawing.Point(218, 60);
+            this.BtnRepeatSong.Location = new System.Drawing.Point(243, 60);
             this.BtnRepeatSong.Name = "BtnRepeatSong";
             this.BtnRepeatSong.Size = new System.Drawing.Size(54, 39);
             this.BtnRepeatSong.TabIndex = 10;
@@ -205,9 +206,9 @@
             // 
             // BtnRepeatList
             // 
-            this.BtnRepeatList.Location = new System.Drawing.Point(278, 60);
+            this.BtnRepeatList.Location = new System.Drawing.Point(303, 60);
             this.BtnRepeatList.Name = "BtnRepeatList";
-            this.BtnRepeatList.Size = new System.Drawing.Size(69, 39);
+            this.BtnRepeatList.Size = new System.Drawing.Size(55, 39);
             this.BtnRepeatList.TabIndex = 11;
             this.BtnRepeatList.Text = "Repetir Lista";
             this.BtnRepeatList.UseVisualStyleBackColor = true;
@@ -225,6 +226,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnStop);
             this.panel1.Controls.Add(this.TBarVolume);
             this.panel1.Controls.Add(this.LabelDuration);
             this.panel1.Controls.Add(this.LabelCurrentTime);
@@ -239,6 +241,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(479, 109);
             this.panel1.TabIndex = 13;
+            // 
+            // BtnStop
+            // 
+            this.BtnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.BtnStop.Location = new System.Drawing.Point(142, 60);
+            this.BtnStop.Name = "BtnStop";
+            this.BtnStop.Size = new System.Drawing.Size(46, 39);
+            this.BtnStop.TabIndex = 17;
+            this.BtnStop.Text = "█";
+            this.BtnStop.UseVisualStyleBackColor = true;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
+            // TBarVolume
+            // 
+            this.TBarVolume.BackColor = System.Drawing.SystemColors.Control;
+            this.TBarVolume.CausesValidation = false;
+            this.TBarVolume.LargeChange = 1;
+            this.TBarVolume.Location = new System.Drawing.Point(359, 60);
+            this.TBarVolume.Maximum = 100;
+            this.TBarVolume.Name = "TBarVolume";
+            this.TBarVolume.Size = new System.Drawing.Size(119, 45);
+            this.TBarVolume.TabIndex = 16;
+            this.TBarVolume.Value = 100;
+            this.TBarVolume.Scroll += new System.EventHandler(this.TBarVolume_Scroll);
             // 
             // LabelDuration
             // 
@@ -257,19 +283,6 @@
             this.LabelCurrentTime.Size = new System.Drawing.Size(34, 13);
             this.LabelCurrentTime.TabIndex = 14;
             this.LabelCurrentTime.Text = "00:00";
-            // 
-            // TBarVolume
-            // 
-            this.TBarVolume.BackColor = System.Drawing.SystemColors.Control;
-            this.TBarVolume.CausesValidation = false;
-            this.TBarVolume.LargeChange = 1;
-            this.TBarVolume.Location = new System.Drawing.Point(353, 60);
-            this.TBarVolume.Maximum = 100;
-            this.TBarVolume.Name = "TBarVolume";
-            this.TBarVolume.Size = new System.Drawing.Size(119, 45);
-            this.TBarVolume.TabIndex = 16;
-            this.TBarVolume.Value = 100;
-            this.TBarVolume.Scroll += new System.EventHandler(this.TBarVolume_Scroll);
             // 
             // AppReproductorMusica
             // 
@@ -318,6 +331,7 @@
         private System.Windows.Forms.Label LabelCurrentTime;
         private System.Windows.Forms.Label LabelDuration;
         private System.Windows.Forms.TrackBar TBarVolume;
+        private System.Windows.Forms.Button BtnStop;
     }
 }
 
